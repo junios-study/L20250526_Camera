@@ -48,6 +48,9 @@ public:
 	TObjectPtr<UInputAction> IA_Zoom;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
+	TObjectPtr<UInputAction> IA_Crouch;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
 	TObjectPtr<UInputMappingContext> IMC_Default;
 
 
@@ -65,6 +68,8 @@ public:
 	void OnZoom(const FInputActionValue& Value);
 
 	void OnJump(const FInputActionValue& Value);
+
+	void OnCrouch(const FInputActionValue& Value);
 
 	
 

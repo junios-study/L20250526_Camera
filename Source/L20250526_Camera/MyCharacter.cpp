@@ -8,6 +8,7 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -90,6 +91,11 @@ void AMyCharacter::OnLook(const FInputActionValue& Value)
 
 void AMyCharacter::OnZoom(const FInputActionValue& Value)
 {
+	//SpringArm->TargetArmLength = FMath::FInterpTo(SpringArm->TargetArmLength, SpringArm->TargetArmLength + Value.Get<float>() * -200.0f, UGameplayStatics::GetWorldDeltaSeconds(GetWorld()), 10.0f);
+	SpringArm->TargetArmLength += Value.Get<float>() * -10.0f;
+	SpringArm->TargetArmLength = FMath::Clamp(SpringArm->TargetArmLength,
+		100.0f,
+		600.0f);
 }
 
 void AMyCharacter::OnJump(const FInputActionValue& Value)

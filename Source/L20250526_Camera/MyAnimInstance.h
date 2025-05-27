@@ -24,4 +24,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "State", VisibleAnywhere)
 	float Direction;
+
+	//skeleton animnotify -> skeleton µû¶ó°¨
+	UFUNCTION()
+	void AnimNotify_HelloWorldCpp(UAnimNotify* Notify);
 };

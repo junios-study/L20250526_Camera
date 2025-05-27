@@ -9,6 +9,7 @@
 #include "EnhancedInputComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
+//#include "AnimInstance.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -123,15 +124,18 @@ void AMyCharacter::OnReload(const FInputActionValue& Value)
 {
 	if (AM_Reload)
 	{
-		PlayAnimMontage(AM_Reload, 1.0f, TEXT("Rifle"));
+		if (!GetMesh()->GetAnimInstance()->Montage_IsPlaying(AM_Reload))
+		{
+			PlayAnimMontage(AM_Reload, 1.0f, TEXT("Rifle"));
+		}
 	}
 
-	if (AM_Hit)
-	{
-		int HitNo = FMath::RandRange(1, 4);
-		FString Temp = FString::Printf(TEXT("Hit_%d"), HitNo);
-		PlayAnimMontage(AM_Hit, 1.0f, *Temp);
-	}
+	//if (AM_Hit)
+	//{
+	//	int HitNo = FMath::RandRange(1, 4);
+	//	FString Temp = FString::Printf(TEXT("Hit_%d"), HitNo);
+	//	PlayAnimMontage(AM_Hit, 1.0f, *Temp);
+	//}
 }
 
 

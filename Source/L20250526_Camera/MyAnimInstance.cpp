@@ -23,3 +23,8 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 			Pawn->GetActorRotation());
 	}
 }
+
+void UMyAnimInstance::AnimNotify_HelloWorldCpp(UAnimNotify* Notify)
+{
+	UE_LOG(LogTemp, Warning, TEXT("HelloWorldCPP"));
+}

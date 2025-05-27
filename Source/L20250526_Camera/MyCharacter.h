@@ -54,6 +54,15 @@ public:
 	TObjectPtr<UInputAction> IA_Reload;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
+	TObjectPtr<UInputAction> IA_Fire;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
+	TObjectPtr<UInputAction> IA_LeftLean;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
+	TObjectPtr<UInputAction> IA_RightLean;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
 	TObjectPtr<UInputMappingContext> IMC_Default;
 
 
@@ -76,6 +85,20 @@ public:
 
 	void OnReload(const FInputActionValue& Value);
 
+	void OnFire(const FInputActionValue& Value);
+
+	void OnLeftLean(const FInputActionValue& Value);
+
+	void OnRightLean(const FInputActionValue& Value);
+
+	void OnEndFire(const FInputActionValue& Value);
+
+	void OnEndLeftLean(const FInputActionValue& Value);
+
+	void OnEndRightLean(const FInputActionValue& Value);
+
+	
+
 	UPROPERTY(BlueprintReadOnly, Category = "Animations", EditAnywhere)
 	TObjectPtr<UAnimMontage> AM_Reload;
 
@@ -83,5 +106,14 @@ public:
 	TObjectPtr<UAnimMontage> AM_Hit;
 
 
+
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	uint8 bIsFire : 1;
+
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	uint8 bIsLeftLean : 1;
+
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	uint8 bIsRightLean : 1;
 
 };

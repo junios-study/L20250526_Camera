@@ -21,6 +21,9 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bIsCrouched = !Pawn->CanCrouch();
 		Direction = UKismetAnimationLibrary::CalculateDirection(Pawn->GetCharacterMovement()->Velocity,
 			Pawn->GetActorRotation());
+		bIsFire = Pawn->bIsFire;
+		bIsLeftLean = Pawn->bIsLeftLean;
+		bIsRightLean = Pawn->bIsRightLean;
 	}
 }
 

@@ -64,6 +64,18 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 		UEIC->BindAction(IA_Reload, ETriggerEvent::Triggered, this, &AMyCharacter::OnReload);
 
+		UEIC->BindAction(IA_Fire, ETriggerEvent::Triggered, this, &AMyCharacter::OnFire);
+
+		UEIC->BindAction(IA_Fire, ETriggerEvent::Canceled, this, &AMyCharacter::OnEndFire);
+
+		UEIC->BindAction(IA_LeftLean, ETriggerEvent::Triggered, this, &AMyCharacter::OnLeftLean);
+
+		UEIC->BindAction(IA_LeftLean, ETriggerEvent::Canceled, this, &AMyCharacter::OnEndLeftLean);
+
+		UEIC->BindAction(IA_RightLean, ETriggerEvent::Triggered, this, &AMyCharacter::OnRightLean);
+
+		UEIC->BindAction(IA_RightLean, ETriggerEvent::Canceled, this, &AMyCharacter::OnEndRightLean);
+
 	}
 
 }
@@ -81,7 +93,6 @@ void AMyCharacter::OnMove(const FInputActionValue& Value)
 	AddMovementInput(CameraForward, DirectionVector.Y);
 	AddMovementInput(CameraRight, DirectionVector.X);
 }
-
 void AMyCharacter::OnLook(const FInputActionValue& Value)
 {
 	FVector2D LookVector = Value.Get<FVector2D>();
@@ -136,6 +147,36 @@ void AMyCharacter::OnReload(const FInputActionValue& Value)
 	//	FString Temp = FString::Printf(TEXT("Hit_%d"), HitNo);
 	//	PlayAnimMontage(AM_Hit, 1.0f, *Temp);
 	//}
+}
+
+void AMyCharacter::OnFire(const FInputActionValue& Value)
+{
+	bIsFire = true;
+}
+
+void AMyCharacter::OnLeftLean(const FInputActionValue& Value)
+{
+	bIsLeftLean = true;
+}
+
+void AMyCharacter::OnRightLean(const FInputActionValue& Value)
+{
+	bIsRightLean = true;
+}
+
+void AMyCharacter::OnEndFire(const FInputActionValue& Value)
+{
+	bIsFire = false;
+}
+
+void AMyCharacter::OnEndLeftLean(const FInputActionValue& Value)
+{
+	bIsLeftLean = false;
+}
+
+void AMyCharacter::OnEndRightLean(const FInputActionValue& Value)
+{
+	bIsRightLean = false;
 }
 
 

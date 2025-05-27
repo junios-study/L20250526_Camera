@@ -79,6 +79,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Animations", EditAnywhere)
 	TObjectPtr<UAnimMontage> AM_Reload;
 
+	UPROPERTY(BlueprintReadOnly, Category = "Animations", EditAnywhere)
+	TObjectPtr<UAnimMontage> AM_Hit;
+
 
 
 };

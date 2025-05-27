@@ -4,6 +4,8 @@
 #include "MyAnimInstance.h"
 #include "MyCharacter.h"
 #include "GameframeWork/CharacterMovementComponent.h"
+#include "KismetAnimationLibrary.h"
+
 
 void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
@@ -17,5 +19,7 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	{
 		Speed = Pawn->GetCharacterMovement()->Velocity.Size2D();
 		bIsCrouched = !Pawn->CanCrouch();
+		Direction = UKismetAnimationLibrary::CalculateDirection(Pawn->GetCharacterMovement()->Velocity,
+			Pawn->GetActorRotation());
 	}
 }

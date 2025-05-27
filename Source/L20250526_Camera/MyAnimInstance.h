@@ -21,4 +21,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "State", VisibleAnywhere)
 	uint8 bIsCrouched : 1;
+
+	UPROPERTY(BlueprintReadOnly, Category = "State", VisibleAnywhere)
+	float Direction;
 };

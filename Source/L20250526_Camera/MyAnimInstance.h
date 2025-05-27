@@ -40,6 +40,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
 	float CurrentSpineAngle;
 
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	float AimYaw;
+
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	float AimPitch;
+
 
 
 	//skeleton animnotify -> skeleton µû¶ó°¨

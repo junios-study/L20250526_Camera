@@ -72,6 +72,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Components", VisibleAnywhere)
 	TObjectPtr<UCameraComponent> Camera;
 
+	UPROPERTY(BlueprintReadOnly, Category = "Components", VisibleAnywhere)
+	TObjectPtr<USkeletalMeshComponent> Weapon;
+
 	
 	void OnMove(const FInputActionValue& Value);
 

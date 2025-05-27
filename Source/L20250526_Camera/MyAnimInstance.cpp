@@ -41,6 +41,9 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		}
 
 		CurrentSpineAngle = FMath::FInterpTo(CurrentSpineAngle, TargetSpineAngle, DeltaSeconds, 8.0f);
+
+		AimYaw = Pawn->GetBaseAimRotation().Yaw;
+		AimPitch = Pawn->GetBaseAimRotation().Pitch;
 	}
 }
 

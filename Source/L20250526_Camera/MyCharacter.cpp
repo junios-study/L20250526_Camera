@@ -61,6 +61,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 		UEIC->BindAction(IA_Crouch, ETriggerEvent::Triggered, this, &AMyCharacter::OnCrouch);
 
+		UEIC->BindAction(IA_Reload, ETriggerEvent::Triggered, this, &AMyCharacter::OnReload);
+
 	}
 
 }
@@ -117,6 +119,13 @@ void AMyCharacter::OnCrouch(const FInputActionValue& Value)
 	}
 }
 
+void AMyCharacter::OnReload(const FInputActionValue& Value)
+{
+	if (AM_Reload)
+	{
+		PlayAnimMontage(AM_Reload, 1.0f, TEXT("Rifle"));
+	}
+}
 
 
 

@@ -51,6 +51,9 @@ public:
 	TObjectPtr<UInputAction> IA_Crouch;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
+	TObjectPtr<UInputAction> IA_Reload;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Input", EditAnywhere)
 	TObjectPtr<UInputMappingContext> IMC_Default;
 
 
@@ -71,7 +74,10 @@ public:
 
 	void OnCrouch(const FInputActionValue& Value);
 
-	
+	void OnReload(const FInputActionValue& Value);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Animations", EditAnywhere)
+	TObjectPtr<UAnimMontage> AM_Reload;
 
 
 

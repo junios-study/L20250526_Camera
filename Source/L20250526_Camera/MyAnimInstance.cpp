@@ -24,6 +24,23 @@ void UMyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bIsFire = Pawn->bIsFire;
 		bIsLeftLean = Pawn->bIsLeftLean;
 		bIsRightLean = Pawn->bIsRightLean;
+
+		if (bIsLeftLean)
+		{
+			TargetSpineAngle = -30.0f;
+		}
+
+		if (bIsRightLean)
+		{
+			TargetSpineAngle = 30.0f;
+		}
+
+		if (!bIsRightLean && !bIsLeftLean)
+		{
+			TargetSpineAngle = 0.0f;
+		}
+
+		CurrentSpineAngle = FMath::FInterpTo(CurrentSpineAngle, TargetSpineAngle, DeltaSeconds, 8.0f);
 	}
 }
 

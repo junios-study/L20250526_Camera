@@ -66,15 +66,15 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 		UEIC->BindAction(IA_Fire, ETriggerEvent::Triggered, this, &AMyCharacter::OnFire);
 
-		UEIC->BindAction(IA_Fire, ETriggerEvent::Canceled, this, &AMyCharacter::OnEndFire);
+		UEIC->BindAction(IA_Fire, ETriggerEvent::Completed, this, &AMyCharacter::OnEndFire);
 
 		UEIC->BindAction(IA_LeftLean, ETriggerEvent::Triggered, this, &AMyCharacter::OnLeftLean);
 
-		UEIC->BindAction(IA_LeftLean, ETriggerEvent::Canceled, this, &AMyCharacter::OnEndLeftLean);
+		UEIC->BindAction(IA_LeftLean, ETriggerEvent::Completed, this, &AMyCharacter::OnEndLeftLean);
 
 		UEIC->BindAction(IA_RightLean, ETriggerEvent::Triggered, this, &AMyCharacter::OnRightLean);
 
-		UEIC->BindAction(IA_RightLean, ETriggerEvent::Canceled, this, &AMyCharacter::OnEndRightLean);
+		UEIC->BindAction(IA_RightLean, ETriggerEvent::Completed, this, &AMyCharacter::OnEndRightLean);
 
 	}
 

@@ -34,6 +34,14 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
 	uint8 bIsRightLean : 1;
 
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	float TargetSpineAngle;
+
+	UPROPERTY(BlueprintReadOnly, Category = "State", EditAnywhere)
+	float CurrentSpineAngle;
+
+
+
 	//skeleton animnotify -> skeleton µû¶ó°¨
 	UFUNCTION()
 	void AnimNotify_HelloWorldCpp(UAnimNotify* Notify);

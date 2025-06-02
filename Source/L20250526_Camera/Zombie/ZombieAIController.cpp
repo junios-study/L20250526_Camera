@@ -3,6 +3,9 @@
 
 #include "ZombieAIController.h"
 #include "Zombie.h"
+#include "BehaviorTree/BehaviorTreeComponent.h"
+#include "BehaviorTree/BlackboardComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 AZombieAIController::AZombieAIController()
 {
@@ -53,5 +56,14 @@ void AZombieAIController::OnPossess(APawn* InPawn)
 	if (Zombie)
 	{
 		RunBehaviorTree(Zombie->ZombieBehaviorTree);
+
+
 	}
+}
+
+void AZombieAIController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	BrainComponent->GetBlackboardComponent()->SetValueAsObject(TEXT("Player"), UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetPawn());
 }

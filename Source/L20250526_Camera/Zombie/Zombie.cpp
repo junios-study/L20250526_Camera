@@ -29,6 +29,5 @@ void AZombie::Tick(float DeltaTime)
 void AZombie::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 

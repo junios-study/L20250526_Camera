@@ -47,7 +47,9 @@ void AZombieAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
-	AZombie* Zombie = Cast<AZombie>(GetPawn());
+	PerceptionComponent;
+
+	AZombie* Zombie = Cast<AZombie>(InPawn);
 	if (Zombie)
 	{
 		RunBehaviorTree(Zombie->ZombieBehaviorTree);

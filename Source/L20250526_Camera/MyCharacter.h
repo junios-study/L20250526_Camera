@@ -13,6 +13,8 @@ class USpringArmComponent;
 class UCameraComponent;
 class UInputAction;
 class UInputMappingContext;
+class UAIPerceptionStimuliSourceComponent;
+
 
 UCLASS()
 class L20250526_CAMERA_API AMyCharacter : public ACharacter
@@ -74,6 +76,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "Components", VisibleAnywhere)
 	TObjectPtr<USkeletalMeshComponent> Weapon;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Components", VisibleAnywhere)
+	TObjectPtr<UAIPerceptionStimuliSourceComponent> PerceptionStimuliSource;
 
 	
 	void OnMove(const FInputActionValue& Value);

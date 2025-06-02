@@ -9,6 +9,9 @@
 #include "EnhancedInputComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
+#include "Perception/AISense_Sight.h"
+
 //#include "AnimInstance.h"
 
 // Sets default values
@@ -29,6 +32,7 @@ AMyCharacter::AMyCharacter()
 	Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Weapon"));
 	Weapon->SetupAttachment(GetMesh(), TEXT("hand_rSocket"));
 
+	PerceptionStimuliSource = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("PerceptionSimuli"));
 }
 
 // Called when the game starts or when spawned
@@ -36,6 +40,12 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (PerceptionStimuliSource)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PerceptionStimuliSource RegisterForSense"));
+		PerceptionStimuliSource->RegisterForSense(UAISense_Sight::StaticClass());
+		PerceptionStimuliSource->RegisterWithPerceptionSystem();
+	}
 
 
 }

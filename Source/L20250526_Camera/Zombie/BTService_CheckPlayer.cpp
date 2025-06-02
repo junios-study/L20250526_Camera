@@ -6,6 +6,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "../MyCharacter.h"
 #include "Zombie.h"
+#include "AIController.h"
 
 void UBTService_CheckPlayer::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
 {
@@ -15,6 +16,18 @@ void UBTService_CheckPlayer::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* 
 	//AMyCharacter* Character = Cast<AMyCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(FName(TEXT("Player"))));
 	if (Character)
 	{
-		OwnerComp.GetBlackboardComponent()->SetValueAsEnum(FName(TEXT("CurrentState")), (uint8)EZombieState::Patrol);
+		float Distance = FVector::Distance(Character->GetActorLocation(), OwnerComp.GetAIOwner()->GetPawn()->GetActorLocation());
+
+		AZombie* Zombie = Cast<AZombie>(OwnerComp.GetAIOwner()->GetPawn());
+		if (Zombie)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Distance %f"), Distance);
+
+			if (Distance > 350.0f && Zombie->CurrentState == EZombieState::Chase)
+			{
+				Zombie->CurrentState = EZombieState::Patrol;
+				OwnerComp.GetBlackboardComponent()->SetValueAsEnum(FName(TEXT("CurrentState")), (uint8)EZombieState::Patrol);
+			}
+		}
 	}
 }

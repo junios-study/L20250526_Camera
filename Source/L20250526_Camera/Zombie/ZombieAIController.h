@@ -4,7 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+
+#include "Perception/AIPerceptionTypes.h"
+#include "Perception/AIPerceptionComponent.h"
+
 #include "ZombieAIController.generated.h"
+
+class UAIPerceptionComponent;
 
 /**
  * 
@@ -23,6 +29,18 @@ public:
 
 	virtual void BeginPlay() override;
 
+	UPROPERTY(VisibleAnyWhere, Category = AI, BlueprintReadWrite)
+	TObjectPtr<UAIPerceptionComponent> Perception;
 
+	//UFUNCTION()
+	//void ProcessPerceptionUpdated(const TArray<AActor*>& UpdatedActors);
 
+	UFUNCTION()
+	void ProcessPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus);
+
+	UFUNCTION()
+	void ProcessPerceptionForgetUpdated(AActor* Actor);
+
+	UFUNCTION()
+	void ProcessPerceptionInfoUpdated(const FActorPerceptionUpdateInfo& UpdateInfo);
 };
